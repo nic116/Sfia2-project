@@ -1,0 +1,5 @@
+secrets/passwords
+
+*.md
+!README.md
+
