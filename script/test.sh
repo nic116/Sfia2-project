@@ -1,6 +1,6 @@
 #!/bin/bash
 source ~/.bashrc
-source /var/lib/jenkins/workspace/superhero-pipeline/venv/bin/activate
+source /var/lib/jenkins/workspace/SFIA2/venv/bin/activate
 
 pip install coverage
 pip install Flask
