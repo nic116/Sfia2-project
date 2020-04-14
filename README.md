@@ -1,321 +1,249 @@
 # Skills Framework for the Information Age (SFIA) - Project 2
 ---
-# Generate your own Superhero name! 
+# Computarised rock, paper, scissors game
 
-This is a project, worked on independently of others, in reference to the QA Learning Academy training base project specification; Practical Project Specification - DevOps Core. The purpose of this project is to fulfill the specification defined for the assignment due Tuesday 14th April 2020, 09:00.
+Projet aiming to return to the user a random computarised rock, paper, scissors game with the aid of microservices. 
 
+## Index
 
-## Contents
 1. [Brief](#brief)
-    1. [Minimal Viable Product (MVP)](#mvp)
-    2. [Tech Stack Requirements](#tech_stack)
-    3. [Project Architecture](#project_architecture)
-        1. [Service #1](#service1_architecture)
-        2. [Service #2 and #3](#service2&3_architecture)
-        3. [Service #4](#service4_architecture)
-2. [Project Management](#project_management)
-    1. [Agile Methodology](#agile)
-    2. [My Proposal](#my_proposal)
-    3. [Kanban Board](#kanban_board)
-        1. [First Sprint](#sprint1)
-        2. [Nth Sprint](#sprintn)
-        3. [Final Sprint](#final_sprint)
-        4. [Future Sprint](#future_sprint)
-3. [Feature Branch Model](#feature_branch)
-4. [Risk Assessment](#risk_assessment)
-    1. [Risk Assessment Matrix](#risk_matrix)
-        1. [Likelihood Table](#likelihood_table)
-        2. [Impact Table](#impact_table)
-        3. [Risk Table](#risk_table)
-        4. [Resulting Risk Matrix](#resulting_risk_matrix)
-    2. [Initial Risk Assessment](#initial_risk_assessment)
-    3. [Ongoing Risk Assessment](#ongoing_risk_assessment)
-    4. [Final Risk Assessment](#final_risk_assessment)
-5. [Project Architecture](#project_architecture)
-    1. [Deployment](#project_deployment)
-    2. [Use Case Diagram/ User Stories](#use_case_diagram)
-    3. [Service Architecture Diagram](#service_architecture_diagram)
-    4. [Entity Relationship Diagrams (ERD)](#entity_relationship_diagrams)
-    5. [Security](#project_security)
-6. [Testing](#testing)
-    1. [Unit Testing](#unit_testing)
-    2. [Integration Testing](#integration_testing)
-    3. [Acceptance Testing](#acceptance_testing)
-    4. [Testing Influence](#testing_influence)
+2. [Trello Board](#trello)
+3. [Risk Assessment](#riskassessment)
+
+   3.1. [Initial Risk Assessment](#initialrisk)
+   
+   3.2. [Final Risk Assessment](#finalrisk)
+   
+   3.3. [Risk Assessment Matrix](#riskmatrix)
+
+4. [Architecture](#architecture)
+
+   4.1. [Feature Branch Model](#featurebranchmodel)
+   
+   4.2. [Service Architecture Diagram](#servicediagram)
+   
+   4.3. [Deployment](#deployment)
+   
+   4.4. [Technologies Used](#technologies)
+
+   
+5. [Testing](#testing)
+
+6. [Front End Design](#design)
+
 7. [Retrospective](#retrospective)
-    1. [What Went Well](#what_went_well)
-    2. [What Didn't Go Well](#what_didn't_go_well)
-    3. [Improvements for the Future](#improvements_for_the_future)
-6. [Installation Guide](#installation)
-7. [Authors](#authors)
-8. [Acknowledgements](#acknowledgements)
 
-## Brief <a name="brief"></a>
-The purpose of this project is to create an application that involves the concepts that build on from the SFIA Fundamental Project; more specifically, this will involve:
-+ Software Development with Python
-+ Continuous Integration (CI)
-+ Cloud Fundamentals
+   7.1. [What Went Well?](#good)
+   
+   7.2. [What Went Wrong?](#bad)
+   
+   7.3. [Future Improvements](#improvements)
 
-The resulting aim of the project is to create an application that generates "Objects" upon a set of predefined rules and a CI Pipeline with full documentation around utilisation of supporting tools. The CI Pipeline needs to be able to successfully deploy the application as per the requirements.
-
-### Minimum Viable Product (MVP) <a name="mvp"></a>
-The Minimum Viable Product (MVP) for the project has the following requirements:
-+ A Kanban board with full expansion on user stories, use cases and tasks needed to complete the project.
-+ An Application fully integrated using the Feature-Branch model into a Version Control System which will subsequently be built through a CI server and deployed to a cloud-based virtual machine. 
-+ The project must follow the Micro Services architecture as per the requirements. 
-+ The project must be deployed using containerisation and an orchestration tool.
-+ Create an Ansible Playbook that will provision the environment that the application needs to run.
-
-### Tech Stack Requirements <a name="tech_stack"></a>
-The Tech Stack requirements are the following:
-
-|Technology Required|Used in this project|
-|:---:|:---:|
-|Kanban Board|Trello|
-|Version Control System (VCS)|Git and Dockerhub|
-|CI Server|Jenkins|
-|Cloud server|GCP virtual machines|
-|Containerisation|Docker|
-|Configuration Management|Ansible|
-|Orchestration Tool|Docker Swarm and Docker Stack|
+8. [Installation guide](#installation)
 
 
-
-|Additional Technology|Used in this project|
-|:---:|:---:|
-|Database|Google Cloud Platform (GCP) SQL Server|
-|Programming language|Python and MySQL|
-|Unit Testing with Python|Pytest|
-|Integration Testing with Python|Coverage|
-|Acceptance Testing with Python|Selenium|
-|Front-end|Flask and HTML (including Jinja2, CSS and Bootstrap)|
-|Load Balancing|Nginx|
-|IDE|Visual Studio Code|
+<a name="brief"></a>
+## 1. The Brief 
+   The project intends to fulfill the brief provided in week six of training.
+   The requirements include: 
++ A Kanban board;
++ Application to be fully integrated using the Feature-Branch model;
++ Project must follow Micro Services architecture;
++ Project must be deployed using containerisation and an orchestration tool;
++ Must create an Ansible Playbook to provision the environment that the application needs to run.
 
 
-### Project Architecture <a name="project_architecture"></a>
-The application must use a micro-service orientated architecture composed of at least 4 services that work together. Services #2, #3 and #4 each need to create 2 different implementations, and must be able to demonstrate swapping these implementations out for each other seamlessly, without disrupting the user experience. 
+<a name="trello"></a> 
+## 2. Trello Board
 
-#### Service #1 <a name="service1_architecture"></a>
-Service #1 will act as the core service. Service 1 will render the Jinja2 templates needed to interact with the application, it will also be responsible for communicating with the other 3 services, and finally for persisting some data in an SQL database.
+As shown below, Trello has been used to keep track of the progress across its duration. The MoSCow Prioritisation Method has been used in order to identify key areas of development, thus allowing for a functional product to be presented as early as possible, increasing the complexity of the project once the minimum viable product is met. 
 
-#### Service #2 and #3 <a name="service2&3_architecture"></a>
-Services #2 and #3 will both generate a random “Object”.
+The project started by defining the user stories, which have been added as a reminder of the project scope and its deliverables, hence serving the role of product backlog as well. 
 
-#### Service #4 <a name="service4_architecture"></a>
-Service #4 will also create an “Object” however this “Object” must be based upon the results of service #2 and #3 using some pre-defined rules.
+The project itself has been split in just one sprint, as it was only meant to be a three week long process. The image below represents the Trello board at the beginning of the project. It can be observed in the right side of the board that there are no bugs present in the project at this stage.
 
-## Project Management <a name="project_management"></a>
-This section will detail the project management tools and techniques used to plan the project, and how they were utilised and adapted throughout the project.
+![alt text][trello1]
+ 
+[trello1]:  https://user-images.githubusercontent.com/61239212/79211679-7426e680-7e3e-11ea-9e2b-162dc7072394.png " Initial Trello Board"
 
-### Agile Methodology <a name="agile"></a>
-For this project I implemented an Agile methodology. I chose to use Agile over other methodologies, such as Waterfall, due to Agile's values and principles. These allow for dynamic project aims, prioritising working code over comprehensive documentation and for testing to be completed in the same iteration as programming.
-However, the Agile methodology is intended to be implemented in a team environment working to produce a product for a customer. Due to the nature of my project being independent and not to be distributed to a customer, some of the values and principles had to be adapted:
-+ **Individuals and Interactions over processes and tools:**
-Normally, this would involve daily team scrums and sprint reviews, instead, I had a daily standup with my trainer, and used various project management tools such as gannt charts and kanban boards to maintain all areas of the project were being tracked simultaneously.
-+ **Working Software over comprehensive documentation:**
-This value is designed to prioritise a working end product over a un-finished well documented project. However, my projects scope is designed to make sure that I understand the content, hence, comprehensive documentation is required for the purpose of this project. Instead, I prioritised working functionalities over front-end design.
-+ **Customer Collaboration over contract negotiation:**
-The application would have no users or customers. So, I acted as the users and treated my trainer as a customer.
-+ **Responding to Change over following a plan:**
-All my project management allowed additional time for change.
+As the project has advanced, the tasks started moving across the board from left to right, until they eventually all reached the 'Done' column. Bugs column has also been slowly populated by the various issues that arose during the duration of the project. This final state of the board can be observed in the figure below. 
 
-### My Proposal <a name="my_proposal"></a>
-My proposal for the solution to this project is to create a "Generate your own Superhero name" website. I took inspiration from popular quizzes on sites such as Buzzfeed. Users would be able to generate either random Superhero names for themselves, or be able to personalise the name based on a variety of user defined inputs, such as: type of superpower, their own name and good or evil.
-
-Service #1 would serve as the user interface server and would provide the application with the user inputs and output the name back to the user. Services #2 and #3 would generate the names and Service #4 would store this information onto a file or equivalent (CSV or MySQL).
-
-### Kanban Board <a name="kanban_board"></a>
-As stated for the MVP, I was required to follow best practices within industry and use a Kanban board to manage my project. I chose to use the Trello application to create my Kanban board, due to my familiarity with the software, having seen it used at QA.
-
-The board is designed around user stories to test the functionalities of the application. These stories are then represented in the product backlog. These product backlogs are then further broken down in to a sprint backlog, tasks, progress, done and bugs list. These additional lists allow for dynamic progress updates of the project and to maintain specific obtainable objectives throughout the project to allow for a deliverable product by the deadline.
-
-I used the MoSCow Prioritisation Method on the Kanban Board with the following key:
-|MoSCow Method Key|Colour Used|
-|:---:|:---:|
-|Must Have|Green|
-|Should Have|Orange|
-|Could Have|Yellow|
-|Won't Have|Red|
+![alt text][trello2]
+ 
+[trello2]:  https://user-images.githubusercontent.com/61239212/79212051-f1525b80-7e3e-11ea-8b27-5b9837d85175.png " Initial Trello Board"
 
 
-I defined "done" as to mean that the feature had been successfully implemented into the application, and had no negative effect on the testing features. If a feature negatively impacted the test results, they were logged into the bugs column.
+Further tracking of the project progress and its results has been performed separately, on paper(for convinience). Due to the limitations of this file, if evidence is needed, please request it personally. 
 
-#### First Sprint <a name="sprint1"></a>
-![Initial Kanban Board](https://i.imgur.com/JEitCVN.png)
-
-#### Nth Sprint <a name="sprintn"></a>
-To include the nth kanban board.
-
-#### Final Sprint <a name="final_sprint"></a>
-To include the final kanban board.
-
-#### Future Sprint <a name="future_sprint"></a>
-To include the a kanban board that details how I would implement future improvements.
-More detailed in retrospective.
-
-### Time Management <a name="time_management"></a>
-Include gantt chart
-Document every activity taken
-
-## Feature Branch Model <a name="feature_branch"></a>
-For this project I used a feature branch model that has three tiers:
-+ Master Branch, which is associated with the Jenkins CI webhook. This acts as the production application
-+ Developer Branch, this manages all the features and only merges to the Master Branch once fully tested
-+ Feature Branches, these branches are where the edits are made and then merged with the developer branch.
-A diagram of this model is shown below:
-![Feature branch model](https://i.imgur.com/hYX8eGv.png)
-
-|Node|Description|
-|:---:|:---:|
-|A|Initial production version|
-|B|Initial developer version|
-|C,G,E,I|Feature branch, server #1,#2,#3 and #4 completed respectively and pushed to developer branch|
-|D,F,H|Next production release pushed up from developer branch|
-|J|Final production release|
-|K|Ongoing Developer branch|
-
-## Risk Assessment <a name="risk_assessment"></a>
-A risk assessment determines possible mishaps, their likelihood and consequences, and the tolerances for such events. It is a combined effort of identifying and analysing potential (future) events that may negatively impact the project and making judgments on the tolerability of the risk on the basis of a risk analysis while considering influencing factors.
-
-### Risk Assessment Matrix <a name="risk_matrix"></a>
-A risk matrix is a matrix that is used during risk assessment to define the level of risk by considering the category of probability or likelihood against the category of consequence severity. This is a simple mechanism to increase visibility of risks and assist management decision making.
-Risk is the lack of certainty about the outcome of making a particular choice and can be calculated as the the probability multiplied by the severity of a given risk.
-
-#### Likelihood Table <a name="likelihood_table"></a>
-| **Probability/Likelihood Value** | **Chance of occurring during the course of the project** |
-|:---:|:---:|
-| **1** | Rare (1% to 20%) |
-| **2** | Unlikely (21% to 40%) |
-| **3** | Possible (41% to 60%) |
-| **4** | Likely (61% to 80%) |
-| **5** | Certain (81% to 100%) |
+ <a name="riskassessment"></a>
+ ## 3. Risk Assessment
+  <a name="initialrisk"></a>
+ ## 3.1. Initial Risk Assessment
+The project started by creating an initial risk assessment as shown below. As the project went on, new risks started appearing as well as current risks changing their likelyhood of occurrence at it got closer to the end of the project.
+ 
+| Risk ID       | Risk Description   | Mitigation     | Likelyhood of occurrence |  Possible Impact  | Impact at occurrence| 
+|:-------------:|:------------------:|:--------------:|:------------------------:|:-----------------:|:-------------------:|
+| 1    | Unstable internet connection | Work on small, individual parts of the project, to avoid being dependent on the internet connection. When unavailable, work on the project management part, or documentation. | 4 | Not being able to deliver the project in time, pushing back some of the tasks that require internet.| 3|
+| 2    | Data compromised on the workstation | Make frequent back ups of the project and ensure computer is locked when leaving the station unattended. Ensure version controlling any changes at the end of each day.  | 2 | Having to start the project/parts of the project from scratch, missing out on possible crucial information previously included. | 4|
+| 3    | Security breach of the database | Ensure a strong password is selected, encrypt the data and set up strong firewall rules. | 3 | Not much impact, as just the results of the randomiser application are stored in the database. | 1|
+| 4    | Exhausting the free trial offered by GCP | Keep track of all the instances used, making sure to delete/terminate the ones that are not useful for the project, and stopping the instances when not in use. | 3 | Not being able to deliver parts or the full project, due to the lack of access to the free trial. | 5 |
+| 5    | Difficulty understanding the material  | Pay attention to the material taught on a daily basis. Follow up on the supplemental materials provided, and practice when given the opportunity. Keep on top of the work by using the video tutorials and the courseware. | 3 | Delivering a poor project due to not understanding the brief/ not knowing how to execute the project. | 4|
+| 6    | Not being able to complete the project in time | Keeping track of the project management timeline using the Trello board, making sure to complete/start at least a task daily.  | 2 | Falling behind with the weekly tasks, randomly working on different other parts of the project, not boxing off particular sections of it, hence not meeting the agile principles. | 5|
 
 
-#### Impact Table <a name="impact_table"></a>
-| **Severity/Impacts Value** | **Negative effect on the project** |
-|:---:|:---:|
-| **1** | Minimal |
-| **2** | Minor |
-| **3** | Moderate |
-| **4** | Major |
-| **5** | Catastrophic |
+  <a name="finalrisk"></a>
+ ## 3.2. Final Risk Assessment
+ 
+| Risk ID       | Risk Description   | Mitigation     | Likelyhood of occurrence |  Possible Impact  | Impact at occurrence| 
+|:-------------:|:------------------:|:--------------:|:------------------------:|:-----------------:|:-------------------:|
+| 1    |Unstable internet connection | Work on small, individual parts of the project, to avoid being dependent on the internet connection. When unavailable, work on the project management part, or documentation. | 4 | Not being able to deliver the project in time, pushing back some of the tasks that require internet. | 3 |
+| 2    | Data compromised on the workstation | Make frequent back ups of the project and ensure computer is locked when leaving the station unattended. Ensure version controlling any changes at the end of each day.  | 2 | Having to start the project/parts of the project from scratch, missing out on possible crucial information previously included. | 4|
+| 3    | Security breach of the database | Ensure a strong password is selected, encrypt the data and set up strong firewall rules.  | 3 | Not much impact, as just the results of the randomiser application are stored in the database. | 1|
+| 4    | Exhausting the free trial offered by GCP | Keep track of all the instances used, making sure to delete/terminate the ones that are not useful for the project, and stopping the instances when not in use.  | 5 | Not being able to deliver parts or the full project, due to the lack of access to the free trial. | 5|
+| 5    | Difficulty understanding the material | Pay attention to the material taught on a daily basis. Follow up on the supplemental materials provided, and practice when given the opportunity. Keep on top of the work by using the video tutorials and the courseware.  | 3 | Delivering a poor project due to not understanding the brief/ not knowing how to execute the project. | 4|
+| 6    | Not being able to complete the project in time | Keeping track of the project management timeline using the Trello board, making sure to complete/start at least a task daily.  | 3 | Falling behind with the weekly tasks, randomly working on different other parts of the project, not boxing off particular sections of it, hence not meeting the agile principles. | 5|
+| 7    | Falling ill | Work from home, do not leave the house unless necessary. Wash hands immediately after entering the house, disinfect the groceries if necessary.  | 4 | Not being able to work, lacking focus, potentially getting admitted into hospital, and therefore not being able to deliver a project. | 5|
+| 8    | GCP connection issues | Work on the database/virtual machines part of the project in the morning, at hours that it is less likely that traffic is high. Focus on documentation during the day, and resume the work in the afternoon.   | 4 | Not being able to work on the main parts of the project, not being able to get help from the trainer regarding the more complicated parts of it. Delivering only the documentation part, hence not being able to pass the project. | 4|
+ 
+ 
+  <a name="riskmatrix"></a>
+ ## 3.3. Risk Assessment Matrix
+ 
+A risk matrix is a matrix that is used during the risk assessment process to define the level of risk by considering the category of probability or likelihood against the category of consequence severity. This is a simple mechanism to increase visibility of risks and assist management decision making. 
+ 
+![alt text][riskmatrix]
+ 
+[riskmatrix]:  https://i.imgur.com/hKCCSIJ.png " Risk Assessment Matrix"
 
 
-#### Risk Table <a name="risk_table"></a>
-| **Risk Value** | **Type of Risk** |
-|:---:|:---:|
-| 0-4 | Trivial |
-| 5-9 | Tolerable |
-| 10-14 | Moderate |
-| 15-19 | Substantial |
-| 20-24 | Extreme |
-| 25+ | Intolerable |
+  <a name="architecture"></a>
+ ## 4. Architecture
+ 
+   <a name="featurebranchmodel"></a>
+ ## 4.1. Feature Branch Model
+ The project consists of 2 branches, to ensure code quality across the duration of the project. These branches can be observed in the figure below, the main one being the master branch, and the one on which the new features were added before the final delivery of the project, the developer branch. 
+ 
+ ![alt text][featurebranch]
+ 
+[featurebranch]:   https://i.imgur.com/DGnFz6i.png " Feature Branch Model"
 
+ The project starts at point A, with a basic architecture of the four services on the master branch as a clean starting point. The developer branch is then created at point B, and all the features are then created on this branch, up until point C, where it is merged back into the master branch. Point D finally represents the final stage of the process. As the project consists of three virtual machines, the same process has been followed for the Jenkins node, up until the final commit, when it has been merged onto this repository, to have a full overview of the project in one place. 
+ 
+   <a name="servicediagram"></a>
+ ## 4.2. Service Architecture Diagram
+ 
+   The application consists of four services as shown in the image below. The first service is responsible of hosting the front end of the application, as well as of ensuring there is an active connection with a MySql database to ensure data persistency. 
+   The second and third services are simply generating two random parts of a story, chosen from a set list, which are then merged together into one string in the fourth service. This is then recalled by the first service, added to the database and displayed then to the user. 
+ 
+ 
+![alt text][servicediagram]
+ 
+[servicediagram]:  https://i.imgur.com/e5s7yRS.png " Risk Assessment Matrix"
 
-#### Resulting Risk Matrix <a name="resulting_risk_matrix"></a>
-|**Likelihood →** <br> **Impact ↓**|**Rare**|**Unlikely**|**Possible**|**Likely**|**Certain**|
-|:---:|:---:|:---:|:---:|:---:|:---:|
-|**Minimal**|Trivial|Trivial|Trivial|Trivial|Tolerable|
-|**Minor**|Trivial|Trivial|Tolerable|Tolerable|Moderate|
-|**Moderate**|Trivial|Tolerable|Tolerable|Moderate|Substantial|
-|**Major**|Trivial|Tolerable|Moderate|Substantial|Extreme|
-|**Catastrophic**|Tolerable|Moderate|Substantial|Extreme|Intolerable|
+   <a name="deployment"></a>
+ ## 4.3. Deployment
+   The deployment of the application uses the toolsets covered in training, focusing on the application's ability to scale the resources needed, as well as its portability. The application rests on three virtal machines: a manager one, a master node and a worker node. This approach has been chosen due to its modularity and ease of maintenance. The master node comprises of Jenkins and Ansible and aims to deploy the necessary dependencies onto the master node. A jenkins pipeline has been implemented, this consisting of installing the set dependencies and deploying the Docker Stack onto the manager and worker node. The architecture of the VMs can be observed in the figure below. 
+   
+![alt text][VMs]
+ 
+[VMs]:  https://i.imgur.com/tqVx3GB.png "VM architecture"
 
-### Initial Risk Assessment <a name="initial_risk_matrix"></a>
-The risks are broken down into two categories: Operational Risks and Objective Risks. These are represented by their Risk ID's: 1.X are Operational Risks and 2.X are Objective Risks.
-The risk assessment is also broken into two categories: Risk Analysis and Risk Management.
-The Risk Analysis categories are: Risk ID, Description, Likelihood, Impact, Consequence and Response Strategy.
-The Risk Management categories are: Response Strategy.
+  The application has initially been constructed on the master node, where the testing of the application has also been performed. After having a simple model of the application, docker has been installed on the local machine, and images of the services have been created and deployed on Docker Hub. The Docker compose file has been created, services deployed, followed by the creation of a docker stack. This has connected the master node to a worker node, and thus the services have been deployed between the two nodes to ensure redundancy. This has all then been automated using Jenkins on the manager node. To ensure that all the nodes have the necessary dependencies installed, Ansible has also been added to the manager node. Thus Jenkins deploys Ansible across the other two nodes and starts the application. 
+  The process is shown in the diagram below. 
+  
+   ![alt text][deployment]
+ 
+[deployment]:  https://i.imgur.com/gXvmckU.png  "Application deployment"
+ 
+   <a name="technologies"></a>
+  ## 4.4. Technologies Used
+  
+  * GitHub: Version Control System
+  * Jenkins: Continuous Intergration Server
+  * Google Cloud Services: Live Environment + SQL Database Host
+  * Visual Studio Code: IDE for frontend and backend development
+  * Trello: Kanban board and Project tracking
+  * Docker: Containerisation
+  * Docker Swarm + Stack: Orchestration
+  * Dockerhub: Version Control for Docker Images and Containers
+  * Ansible: Configuration Management
 
+   
+     <a name="testing"></a>
+ ## 5.Testing
+   The application has been tested using pytest. The unit testing conducted includes URL. Sadly, due to some delays in the project, I have not been able to trigger the test file, the testing phase is not implemented within Jenkins and remains a future improvement. 
+   
+   
+   <a name="design"></a>
+ ## 6. Front end design 
+ 
+ The front end design of this project is simplistic, as seen in the image below. 
+ 
+   ![alt text][frontend]
+ 
+[frontend]:    ![wireframe] https://user-images.githubusercontent.com/61239212/79213486-29f33480-7e41-11ea-898f-ed5964137237.png "Front end design"
 
-|Risk ID|Description|Likelihood|Impact|Risk|Consequence|Response Strategy|
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|1.1|Data compromised|Unlikely|Major|Tolerable|Potential loss of large sections of the project, resulting in setbacks|Using the branch feature in git, and ensuring a frequently updated branch method|
-|1.2|GCP (Google Cloud Processing) budget limit exceeded|Rare|Minimal|Trivial|Personal financial cost, whilst minimal setback to project progress|Google provides $300 initial budget for all users, and disables the autopayment if the allowance runs out. To prevent this from becoming a problem, I have to ensure that feature doesn't become enabled, and to keep an eye on my remaining budget.|
-|1.3|Internet Connectivity Problems|Likely|Major|Substantial|A lot of the work for this project is done on virtual machines and requires a constant internet connection. Missing this would require large periods of time without being able to work on or update the project|There is some work that can be drafted offline before being pushed up to the cloud. If the problem seriously effects the work, then let the trainer know, such that it can be taken into consideration|
-|2.1|Time mismanagement|Possible|Major|Moderate|Falling behind on tasks means rushing on certain aspects of the project and can result in a lower quality of work.|Using methods such as a Trello board and gantt chart to track my progress and ensure I don't fall behind on my work. If my work starts to fall behind, I can work on my project before/after training hours. |
-|2.2|Lack of content knowledge|Possible|Major|Substantial|A lack of understanding of the content covered in the academy will mean that I am unable to fulfill requirements needed for the project|I will first search the internet fo the answers to any questions I have, then seek peer help if I cannot find the answer, before finally approaching my trainer|
-|2.3|Jenkins pipeline error|Unlikely|Minor|Trivial|A problem with Jenkins compatibility with the GitHub webhooks would mean that the pipeline would not automatically run for every push to GitHub, compromising the autonomy of the continuous integration|If not able to be resolved by the deadline, then manual build requests in Jenkins can be used.|
+The button on the right hand side of the page gives the user the ability to generate a new short story idea. Every time the button is pressed, the entry is recorded in a database and saved as a reminder of all previous ideas. 
+As a future update on the front end, it is desired that the content saved in the database to be deplayed to the user, as a reminder of the previous stories they might have started to write. A thematic background is also desired to be implemented, along with a user option to add their name to the story, hence to receive a personalised story. 
+   
 
-### Ongoing Risk Assessment <a name="ongoing_risk_matrix"></a>
-How I added/removed/edited risks as the project progressed
+   
+ <a name="retrospective"></a>
+ ## 7. Retrospective 
+  <a name="good"></a>
+ ## 7.1. What Went Well
+  
+   * Implemented Jenkins
+   * Deployed Docker Swarm with little to no issues
+   * Deployed the application on three different VMs, having Jenkins and Ansible separate from the rest of the application
+   
+   
+     <a name="bad"></a>
+ ## 7.2. What Went Wrong
+   
+   * A busy household and slow gcp service meant that I had to regain connection ofter 
+   * Had to delete my manager node due to some corrupt visudo file. Thus, having to reinstall all packages and ensure location of keys and projects 
+   * Due to complications with some key and understanding playbook and inventory configuration files, the pipeline has not been able to deploy the appication
+   
+      <a name="improvements"></a>
+ ## 7.3. Future Improvements 
+ 
+  * Further development of the front end of the application
+  * Integrating testing within Jenkins script
+  * More test cases implemented, testing the fuctionality of the randomising button amongst them 
+  * Adding coverage report
+  * NGINX implementation  
+  * Selenium testing 
+  
+  A Trello board has been created for the future improvements. As it's not part of the current project, hence not part of the current sprint, it is expected that the implementation of the improvements would take a full sprint to complete. This can be seen in the image below. 
+  
+  ![alt text][newtrello]
+ 
+[newtrello]:    https://user-images.githubusercontent.com/61239212/79216116-93287700-7e44-11ea-8009-4e10034c4bdb.png "Improvements Sprint"
+ 
 
-### Final Risk Assessment <a name="final_risk_matrix"></a>
-The resulting risk assessment
+   <a name="installation"></a>
+ ## 8. Installation guide 
+### Before Installation
 
-## Project Architecture <a name="project_architecture"></a>
-### Tools <a name="project_tools"></a>
-Describe Docker/Dockerswarm, Jenkins and Ansible.
-Describe the files used and be able to answer questions; e.g: Docker is a container service that allows RAM+CPU to be distributed throughout the containers.
-### Deployment <a name="project_deployment"></a>
-Detail how the backend processes work, from visual code to github to jenkins etc.
-Show evolution of diagram
-### Use Case Diagram <a name="use_case_diagram"></a>
-Also detail how the code works front end for the user stories
-Show evolution of diagram
-show that the application can save and read from a database csv or sql.
-### Service Architecture Diagram <a name="service_architecture_diagram"></a>
-Wireframes for application/architecture diagram for servers (front end)
-Show functionality of servers 1,2,3 and 4.
-Show evolution of diagram
+  * Google Cloud Platform account 
+  * Git Hub account
 
-### Security <a name="project_security"></a>
-Detail the security used here and prove that it is secure.
-No exposed ports, showing that port 5000 isn't exposed on any of the containers.
-Port 80 reverse proxy into microservice1
+### Creating the virtual machines
+Navigate to GCP's Compute Engine menu, followed by VM Instances menu. From here, you will be creating one virtual machine with a distinct name, e.g. manager and the operating system set to UBUNTU 18.04. Make sure to tick the "allow http traffic" box in the firewall section before you create the machine. Now SSH into the newly created machine, and create a set of ssh keys using the "ssh-keygen" command. Copy the content of the public key file(id_rsa.pub) and keep it in a safe place for further use.
 
-Firewall rule, only expose port 80 NGINX to the world
+Whilst you are still inside the virtual machine, install Jenkins using this [link](https://linuxize.com/post/how-to-install-jenkins-on-ubuntu-18-04/). When done, access the public ip address in a browser, folowed by ":8080". Now you have just accessed the Jenkins user interface. From here, follow the instructions on screen and set up Jenkins using your credentials. 
 
-Jenkins is exposed to the home and use NGINX.
+The final thing to be installed on this virtual machine is Ansible. Follow this [link](https://www.howtoforge.com/how-to-install-and-configure-ansible-on-ubuntu-1804/), and then you are done. 
 
-### Entity Relationship Diagrams (ERD) <a name="entity_relationship_diagrams"></a>
-I used an ERD to help draft my database. I opted for the MoSCow Prioritisation Method, so focus on producing an MVP for the deadline.
-Not important
+Now go back to GCP and create another virtual machine, with the same UBUNTU 18.04 operating sysyem, but this time name it master. After its creation, navigate to the VPC Network menu on GCP, followed by Firewall Rules menu. Here we are setting up the firewall rules needed for the application to work. 
 
-## Testing <a name="testing"></a>
-I used a unit, integration and acceptance testing method as a measure of my code quality for the application.
+Create a new firewall rule named jenkins, and navigate to the part where it allows you to set specified protocols and ports. Here you tick the first option, and you set it to 8080 to allow jenkins to function on your other machines. Create one more firewall rule named flaskapp and for this one allow a range of ip addressess, from 5000 to 5004. 
 
-### Unit Testing <a name="unit_testing"></a>
-Unit testing is where individual units/ components of a software are tested. The purpose is to validate that each unit of the software performs as designed. A unit usually has one or a few inputs and usually a single output. It is the smallest testable part of any software, hence why I ran a URL and DB pytest to test each CRUD function and URL link.
+Now navigate back to your master VM, press edit, and make sure to add your firewall rules to the network tags section. Before you press save, bring back the public key saved from before, and add it in the SSH keys section. Now save the VM. Before you go back to the main VM list, in the top right corner you can press "create similar" and now you have a third VM, this one having the same set up as the previous one. Call this one worker. Before any further steps, ensure you have openjdk-8 installed on all your VMs using this command "sudo apt install openjdk-8-jdk -y".
 
-### Integration Testing <a name="integration_testing"></a>
-Integration testing is where individual units are combined and tested as a group. The purpose of this level of testing is to expose faults in the interaction between integrated units. Coverage reports is a type of integration testing, and a target of +35% is adequate, 50%+ is acceptable and 80+% is desired. Add discussion for more marks.
+Once all your VMs are set up, go into your master node, and clone down the repository found at this [address](https://github.com/nic116/Sfia2-project.git). Ensure you change your IP addresses and the location of your own private keys in the inventory.cfg file before running any commands. 
 
-### Acceptance Testing <a name="acceptance_testing"></a>
-Acceptance Testing, also known as operational readiness testing, refers to the checking done to a system to ensure that processes and procedures are in place to allow the system to be used and maintained. This includes checks done to back-up facilities, procedures for disaster recovery, training for end users, maintenance procedures, and security procedures.
-+ Selenium is a portable framework for testing front-end web applications.
-+ SonarQube is an open-source platform for continuous inspection of code quality to perform automatic reviews with static analysis of code to detect bugs, code smells, and security vulnerabilities. It offers reports on duplicated code, coding standards, unit tests, code coverage, code complexity, comments, bugs, and security vulnerabilities. SonarQube can also record metrics history and provides evolution graphs as well as providing fully automated analysis and integration with CI integration tools such as Jenkins.
+After setting up your IP addresses, run the ansible playbook. This will install all the dependencies needded for your application to function. Now you can run the docker compose file from the master VM and now you will have the application running. 
 
-### Influence <a name="testing_influence"></a>
-How the testing results influenced the application.
-How I refactored the code based on the results.
-
-## Retrospective  <a name="retrospective"></a>
-### What went well <a name="what_went_well"></a>
-
-### What didn't go well <a name="what_didn't_go_well"></a>
-
-### Improvements for the future <a name="improvements_for_the_future"></a>
-If I had more time dedicated to this project I would have implemented the following:
-+ **Increased testing coverage:**
-As shown previous in the coverage report section of the readme file, there was little coverage of the application, even though a lot of its core features where tested. This is definitely an area i would like to improve in later projects.
-+ **Improved UI:**
-Due to the nature of Agile, I prioritised working CRUD functionality over the documentation and presentation of the project. This meant I did not spend time on the design aspects of the site.
-+ **Selenium testing:**
-My testing protocol only included unit and integration testing. Had more time been allowed, I would have researched and implemented further methods of testing.
-+ **Complex version control branch model:**
-I only used two branches in my project; a master branch and developer branch. To help prepare better for best practice in industry, I would have further branches underneath the developer branch for each product backlog then further branches for the sprint backlogs and then again for the tasks.
-
-## Install Guide <a name="installation"></a>
-Provide support and advice to an initial user looking to use this application.
-Include how to deploy application, whilst keeping brief (use bullet points).
-Include steps like: git clone, install jenkins, etc.
-Be able to answer questions on this
-
-## Authors <a name="authors"></a>
-Thomas Cole - QA Academy Trainee
-
-## Acknowledgements <a name="acknowledgements"></a>
-I would like to acknowledge the QA trainers and other members of my cohort, who were able to help me with any problems I had with my project.# sfia2-proj
-# Sfia2-project
+If you want to set up the Jenkins pipeline, follow [these steps](https://dzone.com/articles/jenkins-03-configure-master-and-slave) to set your nodes, and then follow the usual steps to create the pipeline. Don't forget to set the agents to none in the Jenkinsfile and to mention on which VM you want the stage to take place. 
